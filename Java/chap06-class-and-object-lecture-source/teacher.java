@@ -41,7 +41,7 @@ public class teacher {
             System.out.println("이미 강의가 시작되었습니다.");
         }else {
             System.out.println("강의를 시작하겠습니다. 모두 수업할 준비를 해주세요.");
-            this.startClass=false;
+            this.startClass=true;
 
         }
     }
