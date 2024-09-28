@@ -195,7 +195,63 @@ ORDER BY MANAGER_ID ;
 -- HINT!! round(컬럼명, -5)
 
 -- 서브쿼리
+SELECT ROUND(AVG(SALARY),-5)
+FROM employee 
+WHERE JOB_CODE = 'J1';
 
+SELECT ROUND(AVG(SALARY),-5)
+FROM employee 
+WHERE JOB_CODE = 'J2';
+
+SELECT ROUND(AVG(SALARY),-5)
+FROM employee 
+WHERE JOB_CODE = 'J3';
+
+SELECT ROUND(AVG(SALARY),-5)
+FROM employee 
+WHERE JOB_CODE = 'J4';
+
+SELECT ROUND(AVG(SALARY),-5)
+FROM employee 
+WHERE JOB_CODE = 'J5';
+
+SELECT ROUND(AVG(SALARY),-5)
+FROM employee 
+WHERE JOB_CODE = 'J6';
+
+SELECT ROUND(AVG(SALARY),-5)
+FROM employee 
+WHERE JOB_CODE = 'J7';
+
+-- 메인 쿼리
+SELECT
+		EMP_ID,
+        EMP_NAME,
+        JOB_CODE,
+        SALARY
+FROM employee
+WHERE SALARY = (SELECT ROUND(AVG(SALARY),-5)
+						FROM employee 
+				WHERE JOB_CODE = 'J1') OR 
+      SALARY = (SELECT ROUND(AVG(SALARY),-5)
+						FROM employee 
+				WHERE JOB_CODE = 'J2') OR
+      SALARY = (SELECT ROUND(AVG(SALARY),-5)
+						FROM employee 
+				WHERE JOB_CODE = 'J3') OR
+      SALARY = (SELECT ROUND(AVG(SALARY),-5)
+						FROM employee 
+				WHERE JOB_CODE = 'J4') OR
+      SALARY = (SELECT ROUND(AVG(SALARY),-5)
+						FROM employee 
+				WHERE JOB_CODE = 'J5') OR
+      SALARY = (SELECT ROUND(AVG(SALARY),-5)
+						FROM employee 
+				WHERE JOB_CODE = 'J6') OR
+      SALARY = (SELECT ROUND(AVG(SALARY),-5)
+						FROM employee 
+				WHERE JOB_CODE = 'J7') 
+ORDER BY SALARY DESC;
 -- 8. 퇴사한 여직원과 같은 부서, 같은 직급에 해당하는 직원의 이름, 직급코드, 부서코드, 입사일을 조회하세요.
 
 -- 9. 급여 평균 3위 안에 드는 부서의 부서 코드와 부서명, 평균급여를 조회하세요.
