@@ -209,8 +209,8 @@ SELECT
 		A.EMP_NAME AS '이름',
         A.DEPT_CODE AS '부서명',
         A.MANAGER_ID AS '구분'
-FROM employee A
-IF(A.MANAGER_ID IS NULL,'관리자','직원');
+FROM employee A;
+WHERE IF(A.MANAGER_ID IS NULL,'관리자','직원');
 
 -- 7. 자기 직급의 평균 급여를 받고 있는 직원의 사번, 이름, 직급코드, 급여를 조회하세요.
 -- 단, 급여와 급여 평균은 만원단위로 계산하세요.
