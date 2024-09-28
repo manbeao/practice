@@ -252,9 +252,88 @@ WHERE SALARY = (SELECT ROUND(AVG(SALARY),-5)
 						FROM employee 
 				WHERE JOB_CODE = 'J7') 
 ORDER BY SALARY DESC;
+
+
+
 -- 8. 퇴사한 여직원과 같은 부서, 같은 직급에 해당하는 직원의 이름, 직급코드, 부서코드, 입사일을 조회하세요.
+
+-- 서브 쿼리
+SELECT
+		DEPT_CODE
+FROM employee
+WHERE ENT_DATE IS NOT NULL;
+
+SELECT
+		JOB_CODE
+FROM employee
+WHERE ENT_DATE IS NOT NULL;
+
+-- 메인 쿼리
+SELECT
+		EMP_NAME,
+        JOB_CODE,
+        DEPT_CODE,
+        HIRE_DATE
+FROM employee
+WHERE DEPT_CODE = (SELECT
+							DEPT_CODE
+					FROM employee
+					WHERE ENT_DATE IS NOT NULL) AND 
+	  JOB_CODE =(SELECT
+						JOB_CODE
+					FROM employee
+					WHERE ENT_DATE IS NOT NULL) AND 
+	  ENT_DATE IS NULL;
+
+
 
 -- 9. 급여 평균 3위 안에 드는 부서의 부서 코드와 부서명, 평균급여를 조회하세요.
 -- HINT!! limit
 
+-- 서브 쿼리
+SELECT 
+		AVG(SALARY)
+FROM employee
+GROUP BY DEPT_CODE
+ORDER BY AVG(SALARY) DESC
+LIMIT 3;
+
+-- 메인 쿼리
+SELECT 
+		A.DEPT_CODE,
+        B.DEPT_TITLE,
+        AVG(A.SALARY) AS '평균 급여'
+FROM employee A
+JOIN (SELECT	
+			DEPT_ID,
+            DEPT_TITLE
+		FROM department
+) B ON (A.DEPT_CODE = B.DEPT_ID)
+GROUP BY A.DEPT_CODE
+LIMIT 3;
+
+
+
 -- 10. 부서별 급여 합계가 전체 급여의 총 합의 20%보다 많은 부서의 부서명과, 부서별 급여 합계를 조회하세요.
+
+-- 서브 쿼리
+SELECT 
+		SUM(SALARY)* 0.2
+FROM employee;
+
+-- 메인 쿼리
+SELECT
+		B.DEPT_TITLE,
+        SUM(A.SALARY) AS '부서 별 급여 합계'
+FROM employee A
+JOIN (SELECT
+			DEPT_TITLE,
+            DEPT_ID
+		FROM department
+)B ON (A.DEPT_CODE = B.DEPT_ID)
+GROUP BY DEPT_CODE 
+HAVING SUM(A.SALARY)>(SELECT 
+							SUM(SALARY)* 0.2
+					  FROM employee);
+                      
+                      
