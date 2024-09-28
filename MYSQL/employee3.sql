@@ -169,48 +169,26 @@ WHERE SALARY = (SELECT
 -- HINT!! is not null, union(혹은 then, else), distinct
 
 -- 서브 쿼리
-SELECT
-		EMP_NAME  AS '관리자'
-FROM employee
-WHERE MANAGER_ID IS NULL;
 
-SELECT
-		EMP_NAME  AS '직원'
-FROM employee
-WHERE MANAGER_ID IS NOT NULL;
-		
-        
-SELECT
-		B.JOB_CODE,
-        B.JOB_NAME
-FROM job B
-JOIN ;
+SELECT IF(ISNULL(A.MANAGER_ID), '관리자', '직원') AS '구분' 
+FROM employee A;
 
 -- 메인쿼리
--- SELECT 
--- 		A.EMP_ID AS '사번',
--- 		A.EMP_NAME AS '이름',
---         A.DEPT_CODE AS '부서명',
---         B.JOB_NAME AS '직급',
---         A.MANAGER_ID AS '구분'
--- FROM employee A
--- JOIN (SELECT
--- 					JOB_CODE,
--- 					JOB_NAME
---                     A.MANGER_ID
--- 			FROM job
---             WHERE IF(A.MANAGER_ID IS NULL,'관리자','직원')
---             )B ON(A.JOB_CODE=B.JOB_CODE)
--- ORDER BY MANAGER_ID ASC;
-
-
 SELECT 
 		A.EMP_ID AS '사번',
 		A.EMP_NAME AS '이름',
         A.DEPT_CODE AS '부서명',
-        A.MANAGER_ID AS '구분'
-FROM employee A;
-WHERE IF(A.MANAGER_ID IS NULL,'관리자','직원');
+        B.JOB_NAME AS '직급',
+IF(ISNULL(A.MANAGER_ID), '관리자', '직원') AS '구분' 
+FROM employee A
+JOIN (SELECT
+					JOB_CODE,
+					JOB_NAME
+			FROM job
+            )B ON(A.JOB_CODE=B.JOB_CODE)
+ORDER BY MANAGER_ID ;
+
+
 
 -- 7. 자기 직급의 평균 급여를 받고 있는 직원의 사번, 이름, 직급코드, 급여를 조회하세요.
 -- 단, 급여와 급여 평균은 만원단위로 계산하세요.
