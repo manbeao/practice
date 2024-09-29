@@ -92,37 +92,7 @@ WHERE SALARY = (SELECT
 SELECT 
 		MAX(SALARY)
 FROM employee
-WHERE DEPT_CODE = 'D1';
-
-SELECT 
-		MAX(SALARY)
-FROM employee
-WHERE DEPT_CODE = 'D2';
-
-SELECT 
-		MAX(SALARY)
-FROM employee
-WHERE DEPT_CODE = 'D5';
-
-SELECT 
-		MAX(SALARY)
-FROM employee
-WHERE DEPT_CODE = 'D6';
-
-SELECT 
-		MAX(SALARY)
-FROM employee
-WHERE DEPT_CODE = 'D8';
-
-SELECT 
-		MAX(SALARY)
-FROM employee
-WHERE DEPT_CODE IS NULL;
-
-SELECT 
-		MAX(SALARY)
-FROM employee
-WHERE DEPT_CODE = 'D9';
+GROUP BY DEPT_CODE;
 
 -- 메인쿼리
 SELECT
@@ -131,34 +101,10 @@ SELECT
         DEPT_CODE,
         SALARY
 FROM employee
-WHERE SALARY = (SELECT 
-						MAX(SALARY)
-				FROM employee
-				WHERE DEPT_CODE = 'D1')OR
-		SALARY = (SELECT 
-						MAX(SALARY)
-				FROM employee
-				WHERE DEPT_CODE = 'D2')OR
-		SALARY = (SELECT 
-						MAX(SALARY)
-				FROM employee
-				WHERE DEPT_CODE = 'D5')OR
-		SALARY = (SELECT 
-						MAX(SALARY)
-				FROM employee
-				WHERE DEPT_CODE = 'D6')OR
-		SALARY =(SELECT 
-						MAX(SALARY)
-				FROM employee
-				WHERE DEPT_CODE IS NULL)OR
-		SALARY = (SELECT 
-						MAX(SALARY)
-				FROM employee
-				WHERE DEPT_CODE = 'D8')OR
-		SALARY = (SELECT 
-						MAX(SALARY)
-				FROM employee
-				WHERE DEPT_CODE = 'D9');
+WHERE SALARY = ANY(SELECT 
+							MAX(SALARY)
+					FROM employee
+					GROUP BY DEPT_CODE);
 
 
 
