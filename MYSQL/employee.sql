@@ -108,7 +108,7 @@ WHERE DEPT_CODE = 'D8' OR DEPT_CODE = 'D9';
 
 -- 13. 이씨성이 아닌 직원의 사번, 이름, 이메일주소를 조회하세요
 SELECT 
-		EMP_ID,
+	EMP_ID,
         EMP_NAME,
         EMAIL
 FROM employee
@@ -117,7 +117,7 @@ WHERE EMP_NAME NOT LIKE '이%';
 
 -- 14. J2직급의 급여 200만원 이상 받는 직원이거나 J7 직급인 직원의 이름, 급여, 직급코드를 조회하세요
 SELECT
-		EMP_NAME,
+	EMP_NAME,
         SALARY,
         JOB_CODE
 FROM employee
