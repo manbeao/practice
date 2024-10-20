@@ -49,7 +49,7 @@ WHERE BONUS IS NULL;
 
 -- 7. EMPLOYEE테이블에서 급여를 350만원 이상, 550만원 이하를 받는 직원의 사번, 이름, 급여, 부서코드, 직급코드를 조회하세요
 SELECT 
-		EMP_ID,
+	EMP_ID,
         EMP_NAME,
         SALARY,
         DEPT_CODE,
