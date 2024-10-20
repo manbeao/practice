@@ -89,7 +89,7 @@ WHERE PHONE LIKE '___9%';
 
 -- 11. EMPLOYEE테이블에서 전화번호 국번이 4자리 이면서 9로 시작하는 직원의 사번, 이름, 전화번호를 조회하세요
 SELECT 
-		EMP_ID,
+	EMP_ID,
         EMP_NAME,
         PHONE
 FROM employee
@@ -99,7 +99,7 @@ WHERE PHONE LIKE '___9%' AND PHONE LIKE '%9___%____';
 -- 12. 부서코드가 'D6' 이거나 'D8'인 직원의 이름, 부서, 급여를 조회하세요
 -- HINT!! IN 연산자 : 비교하려는 값 목록에 일치하는 값이 있는지 확인
 SELECT 
-		EMP_NAME,
+	EMP_NAME,
         DEPT_CODE,
         SALARY
 FROM employee
