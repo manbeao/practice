@@ -29,7 +29,7 @@ WHERE SALARY > 3000000;
 
 -- 5. 부서코드가 D6이고 급여를 200만원보다 많이 받는 직원의 이름, 부서코드, 급여를 조회하세요
 SELECT 
-		EMP_NAME,
+	EMP_NAME,
         DEPT_CODE,
         SALARY
 FROM employee
