@@ -6,7 +6,7 @@ SELECT * FROM employee;
 -- 원하는 컬럼 조회
 -- 2. EMPLOYEE 테이블의 사번, 이름을 조회하세요
 SELECT 
-		EMP_ID,
+	EMP_ID,
         EMP_NAME
 FROM employee;
 
