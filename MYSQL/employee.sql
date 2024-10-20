@@ -60,7 +60,7 @@ WHERE SALARY >= 3500000 AND SALARY <= 5500000;
 
 -- 8. EMPLOYEE테이블에서 성이 이씨인 직원의 사번, 이름, 입사일을 조회하세요
 SELECT 
-		EMP_ID,
+	EMP_ID,
         EMP_NAME,
         HIRE_DATE
 FROM employee
