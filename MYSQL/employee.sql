@@ -70,7 +70,7 @@ WHERE EMP_NAME LIKE '이%';
 
 -- 9. EMPLOYEE 테이블에서 '하'가 이름에 포함된 직원의 이름, 주민번호, 부서코드를 조회하세요
 SELECT
-		EMP_NAME,
+	EMP_NAME,
         EMP_NO,
         DEPT_CODE
 FROM employee
@@ -80,7 +80,7 @@ WHERE EMP_NAME LIKE '%하%';
 -- 10. EMPLOYEE테이블에서 전화번호 국번이 9로 시작하는 직원의 사번, 이름, 전화번호를 조회하세요
 -- HINT!! 와일드 카드 사용 : _(글자 한자리), %(0개 이상의 글자)
 SELECT 
-		EMP_ID,
+	EMP_ID,
         EMP_NAME,
         PHONE
 FROM employee
