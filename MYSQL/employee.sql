@@ -39,7 +39,7 @@ WHERE DEPT_CODE= 'D6' AND SALARY > 2000000;
 -- NULL값 조회
 -- 6. 보너스를 지급받지 않는 직원의 사번, 이름, 급여, 보너스를 조회하세요
 SELECT
-		EMP_ID,
+	EMP_ID,
         EMP_NAME,
         SALARY,
         BONUS
