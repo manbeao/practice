@@ -11,8 +11,8 @@ SELECT
 FROM employee A
 INNER JOIN (SELECT
 		JOB_CODE,
-                    JOB_NAME
-			FROM job
+                JOB_NAME
+		FROM job
             WHERE JOB_NAME ='대리'
 ) B USING(JOB_CODE)
 INNER JOIN (SELECT
