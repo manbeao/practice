@@ -16,13 +16,13 @@ INNER JOIN (SELECT
             WHERE JOB_NAME ='대리'
 ) B USING(JOB_CODE)
 INNER JOIN (SELECT
-					DEPT_ID,
+		DEPT_ID,
                     DEPT_TITLE,
                     LOCATION_ID
 			FROM department
 ) C ON (A.DEPT_CODE= C.DEPT_ID)
 INNER JOIN (SELECT
-					LOCAL_CODE,
+		LOCAL_CODE,
                     NATIONAL_CODE,
                     LOCAL_NAME
 			FROM location
