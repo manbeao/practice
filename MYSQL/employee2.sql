@@ -33,13 +33,13 @@ INNER JOIN (SELECT
 
 -- 2. 주민번호가 70년대 생이면서 성별이 여자이고, 성이 전씨인 직원의 이름, 주민등록번호, 부서명, 직급명을 조회하세요.
 SELECT 
-		A.EMP_NAME,
+	A.EMP_NAME,
         A.EMP_NO,
         B.DEPT_TITLE,
         C.JOB_NAME
 FROM employee A
 INNER JOIN (SELECT
-					DEPT_ID,
+		DEPT_ID,
                     DEPT_TITLE
 			FROM department
 ) B ON(A.DEPT_CODE = B.DEPT_ID)
