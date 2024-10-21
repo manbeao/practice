@@ -2,7 +2,7 @@
 
 -- 1. 직급이 대리이면서 아시아 지역에 근무하는 직원의 사번, 이름, 직급명, 부서명, 지역명, 급여를 조회하세요
 SELECT 
-		A.EMP_ID,
+	A.EMP_ID,
         A.EMP_NAME,
         B.JOB_NAME,
         C.DEPT_TITLE,
