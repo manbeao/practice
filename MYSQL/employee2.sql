@@ -10,7 +10,7 @@ SELECT
         A.SALARY
 FROM employee A
 INNER JOIN (SELECT
-					JOB_CODE,
+		JOB_CODE,
                     JOB_NAME
 			FROM job
             WHERE JOB_NAME ='대리'
