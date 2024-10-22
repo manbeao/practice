@@ -78,8 +78,8 @@ SELECT
 FROM employee A 
 INNER JOIN (SELECT 
 	JOB_CODE,
-                    JOB_NAME
-			FROM job
+        JOB_NAME
+	FROM job
 ) B USING(JOB_CODE)
 INNER JOIN (SELECT
 					DEPT_ID,
