@@ -17,9 +17,9 @@ INNER JOIN (SELECT
 ) B USING(JOB_CODE)
 INNER JOIN (SELECT
 		DEPT_ID,
-                    DEPT_TITLE,
-                    LOCATION_ID
-			FROM department
+                DEPT_TITLE,
+                LOCATION_ID
+		FROM department
 ) C ON (A.DEPT_CODE= C.DEPT_ID)
 INNER JOIN (SELECT
 		LOCAL_CODE,
