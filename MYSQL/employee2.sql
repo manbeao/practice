@@ -23,8 +23,8 @@ INNER JOIN (SELECT
 ) C ON (A.DEPT_CODE= C.DEPT_ID)
 INNER JOIN (SELECT
 		LOCAL_CODE,
-                    NATIONAL_CODE,
-                    LOCAL_NAME
+                NATIONAL_CODE,
+                LOCAL_NAME
 			FROM location
             WHERE LOCAL_NAME LIKE'%ASIA%'
 ) D ON (C.LOCATION_ID = D.LOCAL_CODE);
