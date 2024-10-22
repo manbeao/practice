@@ -56,7 +56,7 @@ WHERE EMP_NO LIKE '7%' AND
 
 -- 3. 이름에 '형'자가 들어가는 직원의 사번, 이름, 직급명을 조회하세요.
 SELECT 
-		A.EMP_ID,
+	A.EMP_ID,
         A.EMP_NAME,
         B.JOB_NAME
 FROM employee A
