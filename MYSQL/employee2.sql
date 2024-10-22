@@ -83,8 +83,8 @@ INNER JOIN (SELECT
 ) B USING(JOB_CODE)
 INNER JOIN (SELECT
 		DEPT_ID,
-                    DEPT_TITLE
-			FROM department
+                DEPT_TITLE
+		FROM department
             WHERE DEPT_TITLE LIKE '%해외%'
 ) C ON(A.DEPT_CODE = C.DEPT_ID);
 
