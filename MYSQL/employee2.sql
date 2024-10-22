@@ -71,7 +71,7 @@ WHERE EMP_NAME LIKE '%형%';
 
 -- 4. 해외영업팀에 근무하는 직원의 이름, 직급명, 부서코드, 부서명을 조회하세요.
 SELECT
-		A.EMP_NAME,
+	A.EMP_NAME,
         B.JOB_NAME,
         A.DEPT_CODE,
         C.DEPT_TITLE
