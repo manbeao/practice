@@ -39,9 +39,9 @@ SELECT
         C.JOB_NAME
 FROM employee A
 INNER JOIN (SELECT
-		DEPT_ID,
-                    DEPT_TITLE
-			FROM department
+	DEPT_ID,
+        DEPT_TITLE
+	FROM department
 ) B ON(A.DEPT_CODE = B.DEPT_ID)
 INNER JOIN (SELECT 
 			JOB_CODE,
