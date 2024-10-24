@@ -98,7 +98,7 @@ SELECT
         C.LOCAL_NAME
 FROM employee A
 INNER JOIN (SELECT
-					DEPT_ID,
+		DEPT_ID,
                     DEPT_TITLE,
                     LOCATION_ID
 			FROM department
