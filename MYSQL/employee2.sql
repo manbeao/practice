@@ -92,7 +92,7 @@ INNER JOIN (SELECT
 -- 5. 보너스포인트를 받는 직원의 이름, 보너스, 부서명, 지역명을 조회하세요.
 
 SELECT
-		A.EMP_NAME,
+	A.EMP_NAME,
         A.BONUS,
         B.DEPT_TITLE,
         C.LOCAL_NAME
