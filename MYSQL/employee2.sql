@@ -114,7 +114,7 @@ WHERE A.BONUS IS NOT NULL;
 
 -- 6. 부서코드가 D2인 직원의 이름, 직급명, 부서명, 지역명을 조회하세오.
 SELECT 
-		A.EMP_NAME,
+	A.EMP_NAME,
         B.JOB_NAME,
         C.DEPT_TITLE,
         D.LOCAL_NAME
