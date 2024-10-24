@@ -104,9 +104,9 @@ INNER JOIN (SELECT
 		FROM department
 ) B ON (A.DEPT_CODE = B.DEPT_ID)
 INNER JOIN (SELECT
-					LOCAL_CODE,
-                    LOCAL_NAME
-			FROM location
+		LOCAL_CODE,
+                LOCAL_NAME
+		FROM location
 ) C ON (B.LOCATION_ID = C.LOCAL_CODE)
 WHERE A.BONUS IS NOT NULL;
 
