@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Todo-List</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        const Header = ({ date }) => {
+            const header = {
+                backgroundColor: 'black',
+                color: 'white',
+                textAlign: 'center',
+                height: '70px',
+                position: 'absolute',
+                top: '0px',
+                width: '100%',
+                margin: 0
+            };
+
+            const h1 = {
+                marginTop: '10px'
+            };
+
+            return (
+                <div style={header}>
+                    <h1 style={h1}>오늘의 할일! {date}</h1>
+                </div>
+            );
+        };
+
+        const Footer = () => {
+            const footer = {
+                backgroundColor: 'black',
+                color: 'white',
+                textAlign: 'center',
+                height: '70px',
+                position: 'absolute',
+                bottom: '0px',
+                width: '100%',
+                margin: 0
+            };
+
+            return (
+                <div style={footer}>
+                    <p>Copyright 2024. team-ohgiraffers all right reserved.</p>
+                </div>
+            );
+        };
+
+        const Background = ({ children }) => {
+            const bg = {
+                backgroundColor: '#BEBEBE',
+                width: '100%',
+                height: '890px',
+                position: 'absolute',
+                margin: 0
+            };
+
+            return <div style={bg}>{children}</div>;
+        };
+
+        const Box = ({ children }) => {
+            const box = {
+                backgroundColor: 'white',
+                border: '3px solid black',
+                width: '500px',
+                height: '500px',
+                boxSizing: 'border-box',
+                marginLeft: '37%',
+                marginTop: '10%'
+            };
+
+            return <div style={box}>{children}</div>;
+        };
+
+        const List = ({ items, onToggle, onRemove }) => {
+            const option = {
+                position: 'absolute',
+                top: '200px',
+                left: '37%',
+                listStyle: 'none'
+            };
+
+            const line = {
+                textDecoration: 'line-through'
+            };
+
+            const x = {
+                backgroundColor: 'red',
+                color: 'white',
+                borderRadius: '50px',
+                outline: 'none',
+                border: 'none',
+                height: '20px',
+                marginLeft: '10px'
+            };
+
+            const inputList = items.map(item => (
+                <li key={item.id}>
+                    <input
+                        type="checkbox"
+                        checked={item.completed}
+                        onChange={() => onToggle(item.id)}
+                    />
+                    <label style={item.completed ? line : null}>
+                        &nbsp; {item.text}
+                    </label>
+                    <button style={x} onClick={() => onRemove(item.id)}>
+                        X
+                    </button>
+                </li>
+            ));
+
+            return <ul style={option}>{inputList}</ul>;
+        };
+
+        const TodoList = () => {
+            const [list, setList] = useState([{ id: 1, text: '할일 목록을 추가할것' }]);
+            const [inputText, setInputText] = useState('');
+            const [nextId, setNextId] = useState(2);
+
+            const onChangeHandler = (e) => setInputText(e.target.value);
+
+            const onClickHandler = () => {
+                const changedList = list.concat({ id: nextId, text: inputText });
+                setNextId(nextId + 1);
+                setList(changedList);
+                setInputText('');
+            };
+
+            const onRemove = (id) => {
+                const changedList = list.filter((item) => item.id !== id);
+                setList(changedList);
+            };
+
+            const onToggle = (id) => {
+                const changedList = list.map((item) =>
+                    item.id === id ? { ...item, completed: !item.completed } : item
+                );
+                setList(changedList);
+            };
+
+            return (
+                <Background>
+                    <Header date={new Date().toLocaleDateString()} />
+                    <p style={{ position: 'absolute', top: '15%', left: '47%', fontSize: '20px', fontWeight: '800' }}>
+                        Todo-List
+                    </p>
+                    <Box>
+                        <List items={list} onToggle={onToggle} onRemove={onRemove} />
+                    </Box>
+                    <input
+                        type="text"
+                        style={{ marginLeft: '44%', marginTop: '15px' }}
+                        value={inputText}
+                        onChange={onChangeHandler}
+                    />
+                    <label>
+                        <button
+                            style={{
+                                backgroundColor: 'green',
+                                color: 'white',
+                                borderRadius: '10px',
+                                outline: 'none',
+                                border: 'none',
+                                height: '25px',
+                                width: '75px',
+                                marginLeft: '2px',
+                            }}
+                            onClick={onClickHandler}
+                        >
+                            추가하기
+                        </button>
+                    </label>
+                    <Footer />
+                </Background>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<TodoList />);
+    </script>
+</body>
+
+</html>
