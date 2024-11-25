@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Todo-List</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const { useState } = React;
+
+        const header = {
+            backgroundColor: 'black',
+            color: 'white',
+            textAlign: 'center',
+            height: '70px',
+            position: 'absolute',
+            top: '0px',
+            width: '100%',
+            margin: 0
+        }
+
+        const footer = {
+            backgroundColor: 'black',
+            color: 'white',
+            textAlign: 'center',
+            height: '70px',
+            position: 'absolute',
+            bottom: '0px',
+            width: '100%',
+            margin: 0
+        }
+
+        const h1 = {
+            marginTop: '10px'
+        }
+
+
+        const bg = {
+            backgroundColor: '#BEBEBE',
+            width: '100%',
+            height: '890px',
+            position: 'absolute',
+            margin: 0
+        }
+
+
+        const option = {
+            position: 'absolute',
+            top: '200px',
+            left: '37%',
+            listStyle: 'none'
+
+        }
+
+        const p = {
+            position: 'absolute',
+            top: '15%',
+            left: '47%',
+            fontSize: '20px',
+            fontWeight: '800'
+        }
+
+        const box = {
+            backgroundColor: 'white',
+            border: '3px soild black',
+            width: '500px',
+            height: '500px',
+            boxSizing: 'border-box',
+            marginLeft: '37%',
+            marginTop: '10%'
+
+        }
+
+        const x = {
+            backgroundColor: 'red',
+            color: 'white',
+            borderRadius: '50px',
+            outline: 'none',
+            border: 'none',
+            height: '20px',
+            marginLeft: '10px',
+        }
+
+        const input = {
+            marginLeft: '44%',
+            marginTop: '15px'
+        }
+
+        const insert = {
+            backgroundColor: 'green',
+            color: 'white',
+            borderRadius: '10px',
+            outline: 'none',
+            border: 'none',
+            height: '25px',
+            width: '75px',
+            marginLeft: '2px'
+        }
+
+        function TodoList() {
+
+            const [list, setList] = useState([
+                { id: 1, text: '할일 목록을 추가할것' }
+            ])
+
+
+            const [inputText, setInputText] = useState('');
+            const [nextId, setNextId] = useState(2);
+
+            const onChangeHandler = e => setInputText(e.target.value)
+
+            const onClickHandler = () => {
+                const changedList = list.concat({
+                    id: nextId,
+                    text: inputText
+                })
+
+                setNextId(nextId + 1);
+                setList(changedList);
+                setInputText('')
+            }
+
+            const onRemove = id => {
+
+                const changedList = list.filter(list => list.id !== id);
+                setList(changedList)
+            }
+
+            const inputList = list.map(list =>
+                <li key={list.id} >
+                    <input type="checkBox" /><label>&nbsp; {list.text}</label>
+                    <button style={x} onClick={() => onRemove(list.id)}>X</button>
+                </li>)
+
+            return (
+                <div style={bg}>
+                    <div style={header}>
+                        <h1 style={h1}>오늘의 할일! {new Date().toLocaleDateString()}</h1>
+                    </div>
+                    <p style={p}>Todo-List</p>
+                    <div style={box}>
+                        <ul style={option}>
+                           {inputList}
+                        </ul>
+                    </div>
+                    <input type="text" style={input} value={inputText} onChange={onChangeHandler}/>
+                    <label>
+                        <button style={insert} onClick={onClickHandler}>추가하기</button>
+                    </label>
+                    <div style={footer}>
+                        <p>Copyright 2024. team-ohgiraffers all right reserved.</p>
+                    </div>
+                </div>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<TodoList />)
+    </script>
+</body>
+
+</html>
