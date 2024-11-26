@@ -8,6 +8,12 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <title>Todo-List</title>
+
+    <style>
+        a {
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 
 <body>
@@ -106,6 +112,10 @@
             marginLeft: '2px'
         }
 
+        const line = {
+            textDecoration: 'line-through'
+        }
+
         function TodoList() {
 
             const [list, setList] = useState([
@@ -135,11 +145,18 @@
                 setList(changedList)
             }
 
-            const inputList = list.map(list =>
-                <li key={list.id} >
-                    <input type="checkBox" /><label>&nbsp; {list.text}</label>
-                    <button style={x} onClick={() => onRemove(list.id)}>X</button>
-                </li>)
+            const onToggle = id => {
+                const changedList = list.map(item => item.id === id ? {
+                    ...item, completed: !item.completed} : item);
+                setList(changedList);
+            };
+
+            const inputList = list.map(list => <li key={list.id}>
+                <input type="checkbox" checked={list.completed}
+                    onChange={() => onToggle(list.id)} />
+                <label style={list.completed ? line : null}>&nbsp; {list.text}</label>
+                <button style={x} onClick={() => onRemove(list.id)}>X</button>
+            </li>);
 
             return (
                 <div style={bg}>
@@ -149,10 +166,10 @@
                     <p style={p}>Todo-List</p>
                     <div style={box}>
                         <ul style={option}>
-                           {inputList}
+                            {inputList}
                         </ul>
                     </div>
-                    <input type="text" style={input} value={inputText} onChange={onChangeHandler}/>
+                    <input type="text" style={input} value={inputText} onChange={onChangeHandler} />
                     <label>
                         <button style={insert} onClick={onClickHandler}>추가하기</button>
                     </label>
