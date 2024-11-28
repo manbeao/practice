@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-List</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useState, useReducer } = React;
+
+        const headerStyle = {
+            backgroundColor: 'black',
+            color: 'white',
+            textAlign: 'center',
+            height: '70px',
+            position: 'absolute',
+            top: '0px',
+            width: '100%',
+            margin: 0
+        };
+
+        const footerStyle = {
+            backgroundColor: 'black',
+            color: 'white',
+            textAlign: 'center',
+            height: '70px',
+            position: 'absolute',
+            bottom: '0px',
+            width: '100%',
+            margin: 0
+        };
+
+        const boxStyle = {
+            backgroundColor: 'white',
+            border: '3px solid black',
+            width: '500px',
+            height: '500px',
+            boxSizing: 'border-box',
+            marginLeft: '37%',
+            marginTop: '10%'
+        };
+
+        const listStyle = {
+            position: 'absolute',
+            top: '200px',
+            left: '37%',
+            listStyle: 'none'
+        };
+
+        const lineThrough = {
+            textDecoration: 'line-through'
+        };
+
+        function Header() {
+            return (
+                <div style={headerStyle}>
+                    <h1 style={{ marginTop: '10px' }}>할일 목록을 추가할것{new Date().toLocaleDateString()}</h1>
+                </div>
+            );
+        }
+
+        function Footer() {
+            return (
+                <div style={footerStyle}>
+                    <p>Copyright 2024. team-ohgiraffers all right reserved.</p>
+                </div>
+            );
+        }
+
+        function TodoItem({ item, onToggle, onRemove }) {
+            return (
+                <li key={item.id}>
+                    <input type="checkbox" checked={item.completed} onChange={() => onToggle(item.id)} />
+                    <label style={item.completed ? lineThrough : null}>&nbsp; {item.text}</label>
+                    <button style={{ backgroundColor: 'red', color: 'white', borderRadius: '50px', outline: 'none', border: 'none', height: '20px', marginLeft: '10px' }} onClick={() => onRemove(item.id)}>X</button>
+                </li>
+            );
+        }
+
+        function TodoList({ list, onToggle, onRemove }) {
+            return (
+                <ul style={listStyle}>
+                    {list.map(item => <TodoItem key={item.id} item={item} onToggle={onToggle} onRemove={onRemove} />)}
+                </ul>
+            );
+        }
+
+        function App() {
+            const [list, setList] = useState([{ id: 1, text: '할일 목록을 추가할것', completed: false }]);
+            const [inputText, setInputText] = useState('');
+            const [nextId, setNextId] = useState(2);
+
+            const handleChange = e => setInputText(e.target.value);
+
+            const handleClick = () => {
+                const newList = list.concat({ id: nextId, text: inputText, completed: false });
+                setNextId(nextId + 1);
+                setList(newList);
+                setInputText('');
+            };
+
+            const handleRemove = id => {
+                const newList = list.filter(item => item.id !== id);
+                setList(newList);
+            };
+
+            const handleToggle = id => {
+                const newList = list.map(item => item.id === id ? { ...item, completed: !item.completed } : item);
+                setList(newList);
+            };
+
+            return (
+                <div style={{ backgroundColor: '#BEBEBE', width: '100%', height: '890px', position: 'absolute', margin: 0 }}>
+                    <Header />
+                    <p style={{ position: 'absolute', top: '15%', left: '47%', fontSize: '20px', fontWeight: '800' }}>Todo-List</p>
+                    <div style={boxStyle}>
+                        <TodoList list={list} onToggle={handleToggle} onRemove={handleRemove} />
+                    </div>
+                    <input type="text" style={{ marginLeft: '44%', marginTop: '15px' }} value={inputText} onChange={handleChange} />
+                    <button style={{ backgroundColor: 'green', color: 'white', borderRadius: '10px', outline: 'none', border: 'none', height: '25px', width: '75px', marginLeft: '2px' }} onClick={handleClick}>추가하기</button>
+                    <Footer />
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>

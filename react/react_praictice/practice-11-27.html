@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>11.27 실습문제</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useEffect, useState } = React;
+
+        function Alert({setAlertText}){
+            useEffect(() => {
+            const input = prompt('문자열을 입력하세요');
+            setAlertText(input);
+        },[setAlertText])
+        
+            return (
+                <h1>{setAlertText}</h1>
+            )
+            
+        }
+
+      
+     
+        function App(){
+
+            const [text, setText]= useState('');
+            const [alertText, setAlertText] = useState('');
+            const [timeStart , setTimeStart] = useState(null);
+
+            const onChangeHandler=(e)=>{
+                setText(event.target.value);
+                console.log(event.target.value)
+            }
+
+
+            const onClickHandler=(e)=>{
+                const endTime = new Date().getTime();
+                if (text === alertText) {
+                    const time = ((endTime - timeStart));
+                    alert(`입력까지 ${time}ms 소요`);
+                } else {
+                    alert('문자열과 입력한 문자열의 값이 다릅니다');
+                }
+            }
+            useEffect(() => {
+                if (alertText) {
+                    setTimeStart(new Date().getTime());
+                }
+            }, [alertText]);
+
+            return(
+                <>
+                <h1>{alertText}</h1>
+                <Alert setAlertText={setAlertText}/>
+                <input type="text" value={text} onChange={onChangeHandler} /> 
+                <button onClick={onClickHandler}>입력</button>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
+    </script>
+</body>
+</html>
