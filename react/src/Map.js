@@ -10,7 +10,7 @@ function Map() {
             center: new kakao.maps.LatLng(33.45071, 126.570667),
             level: 3
         };
-        // 지도 중심 부분
+        // 지도 중심 좌표
         const map = new kakao.maps.Map(container, options);
 
 
