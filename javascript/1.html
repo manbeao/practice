@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        
+        const game = function(ch) {
+            let cnt = 0;
+            let rnd = parseInt(Math.random() * 900000) + 100000;
+            document.write(`${ch} 사용자<br> 생성된 난수: ${rnd}<br>`);
+            for (rnd > 0; rnd= parseInt(rnd / 10);) {
+                let mo = rnd%10;
+                if (mo % 3 == 0 && mo != 0) {
+                    document.write(`박수짝 ${++cnt}<br>`);
+                    console.log(cnt);
+                }
+            }
+            document.write(`박수 개수${cnt}<br>`);
+            return cnt;
+        }
+        let user1 = prompt("사용자1");
+        let user2 = prompt("사용자2");
+        let cnt1 = game(user1);
+        let cnt2 = game(user2);
+
+        if (cnt1 == cnt2) {
+            document.write("비겼습니다");
+        }
+        else if(cnt1 > cnt2){
+            document.write(`${user1} 사용자가 이겼습니다`);
+        }
+        else{
+            document.write(`${user2} 사용자가 이겼습니다`);
+        }
+    </script>
+</body>
+
+</html>
