@@ -1,0 +1,131 @@
+@charset "UTF-8";
+header {
+  position: fixed;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: #FFF3A7;
+  box-shadow: 0px 4px 7.3px 1px rgba(0, 0, 0, 0.25);
+  width: 1920px;
+  height: 80px;
+}
+header img {
+  position: absolute;
+  left: 3.54%;
+  right: 89.43%;
+  top: 15%;
+  bottom: 21.25%;
+}
+header span a {
+  position: absolute;
+  left: 61.72%;
+  font-family: "Bobaesum Jindo TTF";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 33px;
+  color: #FF8AA3;
+  width: 140px;
+  transition: color 1s;
+  /* 검색 */
+  /* 소개 */
+  /* 마이페이지 */
+  /* 공지사항 */
+  /* 로그인 */
+}
+header span a:nth-of-type(1) {
+  left: 57.55%;
+  right: 39.53%;
+  top: 28.75%;
+  bottom: 30%;
+}
+header span a:nth-of-type(2) {
+  left: 63.75%;
+  right: 33.33%;
+  top: 28.75%;
+  bottom: 30%;
+}
+header span a:nth-of-type(4) {
+  left: 78.12%;
+  right: 14.69%;
+  top: 28.75%;
+  bottom: 30%;
+}
+header span a:nth-of-type(3) {
+  left: 69.53%;
+  right: 24.69%;
+  top: 28.75%;
+  bottom: 30%;
+}
+header span a:nth-of-type(5) {
+  left: 88.02%;
+  right: 9.27%;
+  top: 35%;
+  bottom: 35%;
+  font-family: "Pretendard Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #232323;
+}
+header span a:nth-of-type(6) {
+  left: 92.14%;
+  right: 4.22%;
+  top: 35%;
+  bottom: 35%;
+  font-family: "Pretendard Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #232323;
+}
+header span a:hover {
+  color: #FF5176;
+}
+header span a:hover::before {
+  position: absolute;
+  content: "";
+  width: 70px;
+  height: 4px;
+  background-color: #FF5176;
+  margin-top: 30px;
+  border-radius: 50px;
+  justify-content: center;
+  margin-left: -5px;
+  animation: lineani 1s ease-in-out;
+}
+header span a:nth-of-type(3):hover::before {
+  width: 120px;
+  animation: lineani2 1s ease-in-out;
+}
+header span a:nth-of-type(4):hover::before {
+  width: 150px;
+  animation: lineani3 1s ease-in-out;
+}
+@keyframes lineani {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 70px;
+  }
+}
+@keyframes lineani2 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 120px;
+  }
+}
+@keyframes lineani3 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 150px;
+  }
+}/*# sourceMappingURL=header.css.map */
