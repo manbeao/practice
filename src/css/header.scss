@@ -1,0 +1,141 @@
+$primary: #FF8AA3;
+$textTitle: #1E1E1E;
+$secondary: #FEDA00;
+$secondary2: #FFF3A7;
+$textStrong: #232323;
+$background: #fff;
+$textNomalDark: #BDBEBF;
+$textNomalLight: #F9F9F9;
+$textCaption: #999999;
+$admin: #B3E7FF;
+$danger: #FF5D18;
+$warning: #EFE03B;
+$pending: #615DFF;
+$success: #51CC16;
+
+header {
+    position: fixed;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    background: $secondary2;
+    box-shadow: 0px 4px 7.3px 1px rgba(0, 0, 0, 0.25);
+    width: 1920px;
+    height: 80px;
+
+    img {
+        position: absolute;
+        left: 3.54%;
+        right: 89.43%;
+        top: 15%;
+        bottom: 21.25%;
+    }
+
+    span {
+        a {
+            position: absolute;
+            left: 61.72%;
+            font-family: 'Bobaesum Jindo TTF';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 30px;
+            line-height: 33px;
+            color: $primary;
+            width: 140px;
+            transition: color 1s;
+    
+            /* 검색 */
+            &:nth-of-type(1) {
+                left: 57.55%;
+                right: 39.53%;
+                top: 28.75%;
+                bottom: 30%;
+            }
+    
+            /* 소개 */
+            &:nth-of-type(2) {
+                left: 63.75%;
+                right: 33.33%;
+                top: 28.75%;
+                bottom: 30%;
+            }
+    
+            /* 마이페이지 */
+            &:nth-of-type(4) {
+                left: 78.12%;
+                right: 14.69%;
+                top: 28.75%;
+                bottom: 30%;
+            }
+    
+            /* 공지사항 */
+            &:nth-of-type(3) {
+                left: 69.53%;
+                right: 24.69%;
+                top: 28.75%;
+                bottom: 30%;
+            }
+    
+            /* 로그인 */
+            &:nth-of-type(5) {
+                left: 88.02%;
+                right: 9.27%;
+                top: 35%;
+                bottom: 35%;
+                font-family: 'Pretendard Variable';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 24px;
+                color: $textStrong;
+            }
+    
+            &:nth-of-type(6) {
+                left: 92.14%;
+                right: 4.22%;
+                top: 35%;
+                bottom: 35%;
+                font-family: 'Pretendard Variable';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 24px;
+                color: $textStrong;
+            }
+    
+            &:hover {
+                color: #FF5176;
+                transition: color 1s ease-in-out;
+            }
+    
+            &::before {
+                position: absolute;
+                content: '';
+                width: 0; /* Start width at 0 */
+                height: 4px;
+                background-color: #FF5176;
+                margin-top: 30px;
+                border-radius: 50px;
+                justify-content: center;
+                margin-left: -5px;
+                transition: width 1s ease-in-out; /* Transition for width */
+            }
+    
+            &:hover::before {
+                width: 65px; /* Final width on hover */
+            }
+    
+            &:nth-of-type(3):hover::before {
+                width: 120px;
+            }
+    
+            &:nth-of-type(4):hover::before {
+                width: 150px;
+            }
+        }
+    }
+    
+    
+}
+
