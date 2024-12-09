@@ -1,0 +1,179 @@
+/* CSS 파일 */
+
+$primary: #FF8AA3;
+$textTitle: #1E1E1E;
+$secondary: #FEDA00;
+$secondary2: #FFF3A7;
+$textStrong: #232323;
+$background: #fff;
+$textNomalDark: #BDBEBF;
+$textNomalLight: #F9F9F9;
+$textCaption: #999999;
+$admin: #B3E7FF;
+$danger: #FF5D18;
+$warning: #EFE03B;
+$pending: #615DFF;
+$success: #51CC16;
+
+header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: $secondary2;
+    box-shadow: 0px 4px 7.3px 1px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    img {
+        position: absolute;
+        left: 3.54%;
+        right: 89.43%;
+        top: 15%;
+        bottom: 21.25%;
+        width: auto;
+    }
+
+    .menu {
+        display: flex;
+        gap: 20px;
+
+        a {
+            font-family: 'Bobaesum Jindo TTF';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+            color: $primary;
+            transition: color 1s;
+            position: relative;
+
+            &:hover {
+                color: #FF5176;
+            }
+
+            &::before {
+                position: absolute;
+                content: '';
+                width: 0;
+                height: 4px;
+                background-color: #FF5176;
+                bottom: -7px;
+                left: 50%;
+                transform: translateX(-50%);
+                transition: width 1s ease-in-out;
+                border-radius: 50px;
+            }
+
+            &::before {
+                height: 0.15rem;
+            }
+
+            &:hover::before {
+                width: 2.5rem;
+            }
+
+            &:nth-of-type(3):hover::before {
+                width: 5.5rem;
+            }
+
+            &:nth-of-type(4):hover::before {
+                width: 6.5rem;
+            }
+
+            &:nth-of-type(5) {
+                font-family: 'Pretendard Variable';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 1rem;
+                color: $textStrong;
+            }
+
+            &:nth-of-type(6) {
+                font-family: 'Pretendard Variable';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 1rem;
+                color: $textStrong;
+            }
+        }
+    }
+
+    .menu-button {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 56px;
+        height: 56px;
+        left: 1806px;
+        top: 13px;
+
+    }
+
+    @media (max-width: 1024px) {
+        .menu {
+            display: none;
+        }
+
+        .menu.open {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu-button {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 85%;
+            top: 0%;
+
+        }
+    }
+}
+
+// 반응형 미디어 쿼리
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .menu {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .menu {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    a {
+        font-size: 0.875rem;
+    }
+}
