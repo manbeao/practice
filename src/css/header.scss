@@ -1,20 +1,3 @@
-/* CSS 파일 */
-
-$primary: #FF8AA3;
-$textTitle: #1E1E1E;
-$secondary: #FEDA00;
-$secondary2: #FFF3A7;
-$textStrong: #232323;
-$background: #fff;
-$textNomalDark: #BDBEBF;
-$textNomalLight: #F9F9F9;
-$textCaption: #999999;
-$admin: #B3E7FF;
-$danger: #FF5D18;
-$warning: #EFE03B;
-$pending: #615DFF;
-$success: #51CC16;
-
 header {
     position: fixed;
     left: 0;
@@ -48,7 +31,7 @@ header {
             font-family: 'Bobaesum Jindo TTF';
             font-style: normal;
             font-weight: 400;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             line-height: 1.5rem;
             color: $primary;
             transition: color 1s;
@@ -121,6 +104,17 @@ header {
     @media (max-width: 1024px) {
         .menu {
             display: none;
+
+            a {
+                font-size: 1rem;
+                &:nth-of-type(5) {
+                    font-size: 0.7rem;
+                }
+    
+                &:nth-of-type(6) {
+                    font-size: 0.7rem;
+                }
+            }
         }
 
         .menu.open {
@@ -132,7 +126,7 @@ header {
             align-items: center;
             top: 48px;
             background: #FFF9D1;
-            height: 100px;
+            height: 80px;
             box-shadow: 0px 4px 7.3px rgba(0, 0, 0, 0.25);
         }
 
@@ -140,53 +134,13 @@ header {
             display: block;
             position: absolute;
         }
-
-    }
-}
-
-// 반응형
-@media (max-width: 1024px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        max-height: 48px;
-
-        img {
-            height: 30px;
-            width: auto;
-        }
     }
 
-    .menu-button {
-        img {
-            position: absolute;
-            top: 15%;
-
-        }
-    }
-
-    .menu {
-        width: 30px;
-        width: 100%;
-        display: inline-block;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    a {
-        font-size: 1vw;
-    }
-}
-
-// 반응형
-@media (max-width: 768px) {
-    header {
+    @media (max-width: 768px) {
         flex-direction: column;
         align-items: center;
         padding: 10px;
         width: 100%;
-
         max-height: 28px;
 
         img {
@@ -195,27 +149,24 @@ header {
             left: 5%;
         }
 
-    }
+        .menu-button {
+            background: none;
 
-    .menu-button {
-        background-color: none;
+            img {
+                position: absolute;
+                top: 8%;
+                left: 80%;
+            }
+        }
 
-        img {
-            position: absolute;
-            top: 8%;
-            left: 80%;
+        .menu {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            a {
+                font-size: 0.5rem;
+            }
         }
     }
-
-    .menu {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        
-    }
-
-    a {
-        font-size: 0.5vw;
-    }
-
 }
